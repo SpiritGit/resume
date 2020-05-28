@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Xinzhi Wang Personal Website</title>
+
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content="The Curriculum Vitae of Spirit Resume."/>
+<meta name='keywords' content="Xinzhi Wang, resume , personal website"/>
+<meta charset="UTF-8"> 
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'> 
+
+</head>
+<body id="top">
+<div id="cv" class="instaFade">
+	<div class="mainDetails">
+		<div id="headshot" class="quickFade">
+			<img src='../../../static/images/headshot.JPG' alt='Xinzhi Wang'>
+			<!--<img src="{% static 'images/headshot.jpg' %}" alt="Xinzhi Wang" />-->
+		</div>
+		
+		<div id="name">
+			<h1 class="quickFade delayTwo">Xinzhi Wang Resume</h1>
+			<h2 class="quickFade delayThree"></h2>
+		</div>
+		
+		<div id="contactDetails" class="quickFade delayFour">
+			<ul>
+				<li><a href="{% url 'chome' %}">Chinese</a></li>
+				<li><a href="w879020706@gmail.com" target="_blank">w879020706@gmail.com</a></li>
+				<li><a href="http://www.xinzhiwang.com">www.xinzhiwang.com</a></li>
+				<li>18052557107</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="mainArea" class="quickFade delayFive">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Personal Profile</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p>{{profile.profile}}</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Work Experience</h1>
+			</div>
+			
+			<div class="sectionContent">
+				{% for work in works %}
+					<article>
+						<h2>{{work.company}}</h2>
+						<p class="subDetails">{{work.time}}</p>
+						<p>{{work.workdetail}}</p>
+					</article>
+				{% endfor %}
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Key Skills</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<ul class="keySkills">
+					{% for skill in skills %}
+						<li>{{skill.skill}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Education</h1>
+			</div>
+			
+			<div class="sectionContent">
+				{% for edu in edus %}
+					<article>
+						<h2>{{edu.school}}</h2>
+						<p class="subDetails">{{edu.time}}</p>
+						<p>{{edu.edudetail}}</p>
+					</article>
+				{% endfor %}
+			</div>
+			<div class="clear"></div>
+		</section>
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Achievements</h1>
+			</div>
+			
+			<div class="sectionContent">
+					<article>
+						<h2>Academic Achievements</h2>
+							{% for aca in acaout %}
+								<div>
+									<p>Title:{{aca.title}}<br>Author:{{aca.author}}<br>Journal:{{aca.journal}}</p>
+								</div>	
+							{% endfor %}
+					</article>
+					<article>
+						<h2>Practice Achievements</h2>
+							{% for project in projects %}
+								<p><a style="text-decoration:none;color:#000000" href='{{project.href}}' target='_blank'>Click for details：{{project.project}}</a></p>
+							{% endfor %}
+					</article>
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		
+	</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3753241-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
